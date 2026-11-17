@@ -7,8 +7,7 @@ modules:
   - type: containerfile
     snippets:
       - |
-        RUN KVER=$(rpm -q kernel-core --qf '%{VERSION}-%{RELEASE}.%{ARCH}\n' | tail -1) && \
-            dnf -y install dkms kernel-devel-${KVER} kernel-headers-${KVER} gcc make git && \
+        RUN dnf -y install dkms && \
             git clone https://github.com/JacKeTUs/simagic-ff /usr/src/simagic-ff && \
             dkms install /usr/src/simagic-ff && \
             update-initramfs -u
