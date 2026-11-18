@@ -4,9 +4,21 @@ base-image: ghcr.io/ublue-os/bazzite-nvidia
 image-version: latest
 
 modules:
+  - type: copy
+    src: hda-jack-retask.conf
+    dest: /etc/modprobe.d/
+
+  - type: copy
+    src: hda-jack-retask.fw
+    dest: /lib/firmware/
+
+  - type: dnf
+    install:
+      packages:
+        - dkms
+
   - type: containerfile
     snippets:
-      - |
-        RUN sufo dnf install dkms && \
-            sudo git clone https://github.com/JacKeTUs/simagic-ff /usr/src/simagic-ff && \
-            sudo dkms install /usr/src/simagic-ff
+      - RUN sudo git clone https://github.com/JacKeTUs/simagic-ff.git /usr/src/simagic-ff
+    snippets:
+      - RUN sudo dkms install /usr/src/simagic-ff
