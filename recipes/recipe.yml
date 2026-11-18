@@ -7,7 +7,6 @@ modules:
   - type: containerfile
     snippets:
       - |
-        RUN dnf -y install dkms && \
-            git clone https://github.com/JacKeTUs/simagic-ff /usr/src/simagic-ff && \
-            dkms install /usr/src/simagic-ff && \
-            update-initramfs -u
+        RUN sufo dnf install dkms && \
+            sudo git clone https://github.com/JacKeTUs/simagic-ff /usr/src/simagic-ff && \
+            sudo dkms install /usr/src/simagic-ff
