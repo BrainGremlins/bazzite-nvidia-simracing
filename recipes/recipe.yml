@@ -12,4 +12,9 @@ modules:
     src: hda-jack-retask.fw
     dest: /lib/firmware/
 
+  - type: script
+    snippets:
+      - "sudo git clone https://github.com/JacKeTUs/simagic-ff.git /usr/src/simagic-ff"
+      - "sudo dkms install /usr/src/simagic"
+
   - type: signing
