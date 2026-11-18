@@ -12,6 +12,4 @@ modules:
     src: hda-jack-retask.fw
     dest: /lib/firmware/
 
-  - type: initramfs
-
   - type: signing
