@@ -12,14 +12,6 @@ modules:
     src: hda-jack-retask.fw
     dest: /lib/firmware/
 
-  - type: containerfile
-    snippets:
-      - RUN --sudo git clone https://github.com/JacKeTUs/simagic-ff.git /usr/src/simagic-ff
-
-  - type: containerfile
-    snippets:
-      - RUN --sudo dkms install /usr/src/simagic-ff
-
   - type: initramfs
 
   - type: signing
