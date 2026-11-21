@@ -4,6 +4,13 @@ base-image: ghcr.io/ublue-os/bazzite-nvidia
 image-version: stable
 
 modules:
+  - type: dnf
+    install:
+      packages:
+        - alsa-tools
+        - jq
+        - xr-hardware
+
   - type: copy
     src: hda-jack-retask.conf
     dest: /etc/modprobe.d/
@@ -11,12 +18,6 @@ modules:
   - type: copy
     src: hda-jack-retask.fw
     dest: /lib/firmware/
-
-  - type: dnf
-    install:
-      packages:
-        - jq
-        - xr-hardware
 
   - type: containerfile
     snippets:
