@@ -10,7 +10,6 @@ modules:
         - alsa-tools
         - jq
         - xr-hardware
-        - dkms
 
   - type: copy
     src: hda-jack-retask.conf
