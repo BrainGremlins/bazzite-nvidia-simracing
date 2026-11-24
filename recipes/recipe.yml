@@ -10,6 +10,7 @@ modules:
         - alsa-tools
         - jq
         - xr-hardware
+        - dkms
 
   - type: copy
     src: hda-jack-retask.conf
@@ -18,15 +19,5 @@ modules:
   - type: copy
     src: hda-jack-retask.fw
     dest: /lib/firmware/
-
-  - type: containerfile
-    snippets:
-      - |
-        RUN KVER=$(rpm -q kernel-core --qf '%{VERSION}-%{RELEASE}.%{ARCH}\n' | tail -1) && \
-            dnf -y install dkms kernel-devel-${KVER} kernel-headers-${KVER} gcc make git openssl && \
-            git clone https://github.com/JacKeTUs/simagic-ff /usr/src/simagic-ff-1.0 && \
-            dkms build -m simagic-ff -v 1.0 -k ${KVER} && \
-            dkms install -m simagic-ff -v 1.0 -k ${KVER} --no-depmod-run && \
-            depmod -a ${KVER} 
 
   - type: signing
