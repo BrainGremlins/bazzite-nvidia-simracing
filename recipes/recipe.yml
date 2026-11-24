@@ -14,7 +14,8 @@ modules:
   - type: script
     snippets:
       - git clone https://github.com/JacKeTUs/simagic-ff /usr/src/simagic-ff
-      - dnf install dkms
+      - cd /usr/src/simagic-ff
+      - make
 
   - type: copy
     src: hda-jack-retask.conf
