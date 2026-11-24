@@ -14,8 +14,7 @@ modules:
   - type: script
     snippets:
       - git clone https://github.com/JacKeTUs/simagic-ff /usr/src/simagic-ff
-      - cd /usr/src/simagic-ff
-      - make
+      - make /usr/src/simagic-ff
 
   - type: copy
     src: hda-jack-retask.conf
